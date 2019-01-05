@@ -1,5 +1,6 @@
 package br.com.treinaweb.main;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -30,7 +31,16 @@ public class Main {
 		default:
 			System.out.println("Operação inválida!"); //saída padrão se nenhum 'case' acima seja verdadeiro
 		}
-		System.out.println(String.format("%d %c %d = %d", numero1, operacao, numero2, resultado)); // saída
+		/*
+		 * Entendendo a criação e funcionamento de uma collection chamada ArrayList. Essa collection precisa
+		 * de componentes que estão no pacote java.util que é o componente ArrayList. Além disso, a estrutura
+		 * para a criação e adição de conteúdo dentro de um ArrayList é feito com a estrutura abaixo.
+		 */
+		ArrayList<String> historico = new ArrayList<String>(); //ArrayList que guarda strings => observe: ArrayList<TIPO>
+		String entradaHistorico = String.format("%d %c %d = %d", numero1, operacao, numero2, resultado); //conteúdo a ser armazenado
+		historico.add(entradaHistorico); //adicionando o conteudo no ArrayList
+		
+		System.out.println(entradaHistorico); // saída
 		scanner.close();
 	}
 }
