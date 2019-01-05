@@ -39,17 +39,20 @@ public class Main {
 				System.out.println(entradaHistorico);
 			} else if (acao == 2) {
 				System.out.println("=== Historico ===");
-				System.out.println(String.format("Você já fez %d operações", historico.size())); //elemento novo: .size()
-				for (int i = 0; i < historico.size(); i++) {
-					System.out.println(historico.get(i)); //.get() pega os índices do ArrayList
-				}
+				System.out.println(String.format("Você já fez %d operações", historico.size()));
+				
+				historico.forEach(itemHistorico -> System.out.println(itemHistorico)); //lambda
+//				for (int i = 0; i < historico.size(); i++) {
+//					System.out.println(historico.get(i));
+//				}
+				
 			}
 			System.out.println("=== O que você deseja fazer? ===");
 			System.out.println("1. Realizar outra operação matematica");
 			System.out.println("2. Visualizar histórico");
 			System.out.println("0. Sair");
-			System.out.print("Sua opção: "); //pega a resposta do usuario
-			acao = scanner.nextInt(); //entrega para acao
+			System.out.print("Sua opção: ");
+			acao = scanner.nextInt();
 		}
 		scanner.close();
 	}
