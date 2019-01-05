@@ -4,43 +4,53 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-	
-	static int resultado;
-	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Digite o primeiro número: ");
-		int numero1 = scanner.nextInt();
-		System.out.print("Digite a operação [ +  -  *  / ]: ");
-		char operacao = scanner.next().charAt(0);
-		System.out.print("Digite o segundo número: ");
-		int numero2 = scanner.nextInt();
-		switch (operacao) {
-		case '+':
-			resultado = numero1 + numero2; //processamento
-			break;
-		case '-':
-			resultado = numero1 - numero2; //processamento
-			break;
-		case '*':
-			resultado = numero1 * numero2; //processamento
-			break;
-		case '/':
-			resultado = numero1 / numero2; //processamento
-			break;
-		default:
-			System.out.println("Operação inválida!"); //saída padrão se nenhum 'case' acima seja verdadeiro
+		int acao = 1; // 0 = sair; 1 = operacao matematica; 2 = historico
+		ArrayList<String> historico = new ArrayList<String>();
+		while (acao > 0) {
+			if (acao == 1) {
+				System.out.println("=== Operacao matematica ===");
+				System.out.print("Digite o primeiro número: ");
+				int numero1 = scanner.nextInt();
+				System.out.print("Digite a operação [ +  -  *  / ]: ");
+				char operacao = scanner.next().charAt(0);
+				System.out.print("Digite o segundo número: ");
+				int numero2 = scanner.nextInt();
+				int resultado = 0;
+				switch (operacao) {
+				case '+':
+					resultado = numero1 + numero2;
+					break;
+				case '-':
+					resultado = numero1 - numero2;
+					break;
+				case '*':
+					resultado = numero1 * numero2;
+					break;
+				case '/':
+					resultado = numero1 / numero2;
+					break;
+				default:
+					System.out.println("Operação inválida!");
+				}
+				String entradaHistorico = String.format("%d %c %d = %d", numero1, operacao, numero2, resultado);
+				historico.add(entradaHistorico);
+				System.out.println(entradaHistorico);
+			} else if (acao == 2) {
+				System.out.println("=== Historico ===");
+				System.out.println(String.format("Você já fez %d operações", historico.size())); //elemento novo: .size()
+				for (int i = 0; i < historico.size(); i++) {
+					System.out.println(historico.get(i)); //.get() pega os índices do ArrayList
+				}
+			}
+			System.out.println("=== O que você deseja fazer? ===");
+			System.out.println("1. Realizar outra operação matematica");
+			System.out.println("2. Visualizar histórico");
+			System.out.println("0. Sair");
+			System.out.print("Sua opção: "); //pega a resposta do usuario
+			acao = scanner.nextInt(); //entrega para acao
 		}
-		/*
-		 * Entendendo a criação e funcionamento de uma collection chamada ArrayList. Essa collection precisa
-		 * de componentes que estão no pacote java.util que é o componente ArrayList. Além disso, a estrutura
-		 * para a criação e adição de conteúdo dentro de um ArrayList é feito com a estrutura abaixo.
-		 */
-		ArrayList<String> historico = new ArrayList<String>(); //ArrayList que guarda strings => observe: ArrayList<TIPO>
-		String entradaHistorico = String.format("%d %c %d = %d", numero1, operacao, numero2, resultado); //conteúdo a ser armazenado
-		historico.add(entradaHistorico); //adicionando o conteudo no ArrayList
-		
-		System.out.println(entradaHistorico); // saída
 		scanner.close();
 	}
 }
