@@ -41,7 +41,7 @@ public class Main {
 				System.out.println("=== Historico ===");
 				System.out.println(String.format("Você já fez %d operações", historico.size()));
 				
-				historico.forEach(itemHistorico -> System.out.println(itemHistorico)); //lambda
+				historico.forEach(itemHistorico -> System.out.println(itemHistorico)); //lambda (não funcionou)
 //				for (int i = 0; i < historico.size(); i++) {
 //					System.out.println(historico.get(i));
 //				}
