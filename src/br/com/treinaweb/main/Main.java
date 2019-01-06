@@ -40,12 +40,10 @@ public class Main {
 			} else if (acao == 2) {
 				System.out.println("=== Historico ===");
 				System.out.println(String.format("Você já fez %d operações", historico.size()));
-				
-				historico.forEach(itemHistorico -> System.out.println(itemHistorico)); //lambda (não funcionou)
-//				for (int i = 0; i < historico.size(); i++) {
-//					System.out.println(historico.get(i));
-//				}
-				
+				//Expressão lambda para substituir este for não funcionou
+				for (int i = 0; i < historico.size(); i++) {
+					System.out.println(historico.get(i));
+				}
 			}
 			System.out.println("=== O que você deseja fazer? ===");
 			System.out.println("1. Realizar outra operação matematica");
